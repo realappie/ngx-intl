@@ -1,27 +1,10 @@
 # NgxIntl
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.0.
+This project will serve as a wrapper for the [intl](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl) api. It will provide you a set of pipes for both date formatting (`Intl.DateTimeFormat`) and number formatting (`Intl.NumberFormat`)
 
-## Development server
+The benefit of using this over angular's out of the box `number` and `date` pipes is that the localization files are provided by the browser. You will not only will you have some savings in terms of bundle size, but this also means you can have runtime switching of locales. Without worrying about things like having multiple bundles for your app or hacks that change the `LOCALE_ID` with one bundle.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+There is one catch though! Browser support, as of today there is support for [95%](https://caniuse.com/#feat=internationalization) of the browsers. But there are polyfills that you can load yourself [Intl.js](https://github.com/andyearnshaw/Intl.js/).
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+You can check out the demo [here](https://stackblitz.com/edit/ngx-intl)
