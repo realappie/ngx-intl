@@ -1,6 +1,10 @@
 {
   "name": "ngx-intl",
   "version": "0.0.1",
+  "author": {
+    "name": "abdel el-medny",
+    "email": "abdelelmedny@gmail.com"
+  },
   "peerDependencies": {
     "@angular/common": "^8.0.0",
     "@angular/core": "^8.0.0"
