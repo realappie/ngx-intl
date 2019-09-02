@@ -19,7 +19,7 @@ export class IntlNumberPipe implements PipeTransform, OnDestroy {
 
   private lastOutput: string = null;
 
-  private lastInput: [number, Intl.NumberFormatOptions] = null;
+  private lastInput: [number, Intl.NumberFormatOptions] = [null, null];
 
   private stop$ = new Subject();
 

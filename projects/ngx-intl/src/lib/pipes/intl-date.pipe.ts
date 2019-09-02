@@ -19,7 +19,7 @@ export class IntlDatePipe implements PipeTransform, OnDestroy {
 
   private lastOutput: string = null;
 
-  private lastInput: [Date|string, Intl.DateTimeFormatOptions] = null;
+  private lastInput: [Date|string, Intl.DateTimeFormatOptions] = [null, null];
 
   private stop$ = new Subject();
 
