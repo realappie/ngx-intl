@@ -36,7 +36,7 @@ export class IntlDatePipe implements PipeTransform, OnDestroy {
     .subscribe((locale) => {
       const [lastValue, lastOpts] = this.lastInput;
 
-      const dateObject = typeof lastValue === 'string' ? new Date(lastValue as string) : lastValue as Date;
+      const dateObject = (lastValue && typeof lastValue === 'string') ? new Date(lastValue as string) : lastValue as Date;
 
       this.lastOutput = new Intl.DateTimeFormat(locale, lastOpts).format(dateObject);
 
