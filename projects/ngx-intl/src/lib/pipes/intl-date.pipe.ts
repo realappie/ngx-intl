@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Pipe, PipeTransform, OnDestroy } from '@angular/core';
-import { isEqual, isString } from 'lodash';
+import { isEqual } from 'lodash';
 import { Subject } from 'rxjs';
 import { takeUntil, skip } from 'rxjs/operators';
 import { IntlService } from '../intl.service';
@@ -36,7 +36,7 @@ export class IntlDatePipe implements PipeTransform, OnDestroy {
     .subscribe((locale) => {
       const [lastValue, lastOpts] = this.lastInput;
 
-      const dateObject = isString(lastValue) ? new Date(lastValue as string) : lastValue as Date;
+      const dateObject = typeof lastValue === 'string' ? new Date(lastValue as string) : lastValue as Date;
 
       this.lastOutput = new Intl.DateTimeFormat(locale, lastOpts).format(dateObject);
 
@@ -47,7 +47,7 @@ export class IntlDatePipe implements PipeTransform, OnDestroy {
   transform(value: Date|string, opts?: Intl.DateTimeFormatOptions): string {
     // If the input hasn't changed, we will send back the last calculated value
     //
-    if (isEqual(this.lastInput, value)) {
+    if (this.lastInput.toString() === value.toString()) {
       return this.lastOutput;
     }
 
@@ -57,7 +57,7 @@ export class IntlDatePipe implements PipeTransform, OnDestroy {
 
     const currentLocale = this.$internationalisation.getLocale$().value;
 
-    const dateObject = isString(value) ? new Date(value as string) : value as Date;
+    const dateObject = typeof value === 'string' ? new Date(value as string) : value as Date;
 
     this.lastOutput = new Intl.DateTimeFormat(currentLocale, opts).format(dateObject);
 

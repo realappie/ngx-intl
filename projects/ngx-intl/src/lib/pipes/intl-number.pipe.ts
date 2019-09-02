@@ -45,7 +45,7 @@ export class IntlNumberPipe implements PipeTransform, OnDestroy {
   transform(value: number, opts?: Intl.NumberFormatOptions): string {
     // If the input hasn't changed, we will send back the last calculated value
     //
-    if (isEqual(this.lastInput, value)) {
+    if (this.lastInput.toString() === value.toString()) {
       return this.lastOutput;
     }
 
